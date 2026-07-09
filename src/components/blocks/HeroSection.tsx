@@ -36,7 +36,7 @@ export function HeroSection() {
 
           {/* Headline */}
           <motion.h1
-            className="font-serif text-[clamp(2.8rem,6.5vw,5.2rem)] font-light text-white leading-[1.06] mb-8 tracking-tight"
+            className="font-serif text-[clamp(2.8rem,6.5vw,5.2rem)] font-light text-white leading-[1.06] mb-4 tracking-tight"
             style={{ textShadow: '0 2px 24px rgba(0,0,0,0.5)' }}
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,23 +46,6 @@ export function HeroSection() {
             <em className="font-light italic">Devotion</em>{" "}
             &amp; Presence.
           </motion.h1>
-
-          {/* Identity line */}
-          <motion.div
-            className="flex flex-wrap items-center gap-2 sm:gap-3 mb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-          >
-            {["Yoga", "Kirtan", "Spirituality"].map((label, i) => (
-              <>
-                <span key={label} className="font-sans text-[11px] tracking-[0.22em] uppercase text-white/60">
-                  {label}
-                </span>
-                {i < 2 && <span className="text-[#D79B42]/50 text-xs" aria-hidden="true">·</span>}
-              </>
-            ))}
-          </motion.div>
           <motion.p
             className="font-sans text-base md:text-lg text-white/85 leading-relaxed mb-10 max-w-[520px]"
             style={{ textShadow: '0 1px 12px rgba(0,0,0,0.4)' }}

@@ -13,11 +13,11 @@ import { ContactSection } from "@/components/blocks/ContactSection";
 export const metadata: Metadata = {
   title: "Yogi Manu | Yoga, Kirtan & Spiritual Teachings",
   description:
-    "Discover yoga classes, kirtan and spiritual teachings from Yogi Manu — rooted in lived experience, devotion and daily practice.",
+    "Discover yoga classes, kirtan and spiritual teachings from Yogi Manu – rooted in lived experience, devotion and daily practice.",
   openGraph: {
     title: "Yogi Manu | Yoga, Kirtan & Spiritual Teachings",
     description:
-      "Discover yoga classes, kirtan and spiritual teachings from Yogi Manu — rooted in lived experience, devotion and daily practice.",
+      "Discover yoga classes, kirtan and spiritual teachings from Yogi Manu – rooted in lived experience, devotion and daily practice.",
     type: "website",
   },
 };

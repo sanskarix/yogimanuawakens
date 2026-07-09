@@ -48,7 +48,7 @@ export function AboutSection() {
               <p className="font-sans text-base text-[#6D6D6D] leading-[1.9]">
                 What began as a search for healing became a journey into
                 meditation, mantra, devotion and conscious living. Today I share
-                these practices — not as a teacher with answers, but as someone
+                these practices – not as a teacher with answers, but as someone
                 who found peace through sincere daily effort.
               </p>
 
@@ -91,8 +91,8 @@ export function AboutSection() {
                   Simple practices.<br />A more peaceful life.
                 </h3>
                 <p className="font-sans text-base text-[#6D6D6D] leading-[1.9]">
-                  Everything I share — yoga, breathwork, mantra, kirtan,
-                  devotion, spiritual conversation — comes directly from my own
+                  Everything I share – yoga, breathwork, mantra, kirtan,
+                  devotion, spiritual conversation – comes directly from my own
                   practice. There is no performance here. Only an open
                   invitation to explore a quieter, more present way of living.
                 </p>
@@ -154,7 +154,7 @@ export function AboutSection() {
             </div>
 
             <p className="font-sans text-sm tracking-widest uppercase text-[#D79B42] mb-6">
-              Neem Karoli Baba — Maharaj Ji
+              Neem Karoli Baba – Maharaj Ji
             </p>
 
             <blockquote className="space-y-5">
@@ -167,7 +167,7 @@ export function AboutSection() {
                 ground beneath everything I do.
               </p>
               <footer>
-                <cite className="font-sans text-sm text-[#6D6D6D] not-italic">— Yogi Manu</cite>
+                <cite className="font-sans text-sm text-[#6D6D6D] not-italic">– Yogi Manu</cite>
               </footer>
             </blockquote>
           </FadeIn>

@@ -8,7 +8,7 @@ const pillars = [
     label: "Yoga",
     tagline: "Where healing begins.",
     description:
-      "Yoga is where my own journey started. Not with flexibility or advanced poses — simply with a desire to live without pain. These practices help you move more freely, breathe more deeply and feel more at home in your body.",
+      "Yoga is where my own journey started. Not with flexibility or advanced poses – simply with a desire to live without pain. These practices help you move more freely, breathe more deeply and feel more at home in your body.",
     cta: "Explore the practice",
     href: "#journey",
     image: "/yoga.png",

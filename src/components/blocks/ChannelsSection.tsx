@@ -6,14 +6,14 @@ import { FadeIn } from "@/components/shared/FadeIn";
 function YTIcon({ size = 13, className = "" }: { size?: number; className?: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/>
+      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z" />
     </svg>
   );
 }
 
 // ── Replace with real YouTube channel URLs ────────────────────────────────
-const YOUTUBE_YOGA         = "https://www.youtube.com/@yogimanu-yoga";
-const YOUTUBE_KIRTAN       = "https://www.youtube.com/@yogimanu-kirtan";
+const YOUTUBE_YOGA = "https://www.youtube.com/@yogimanu-yoga";
+const YOUTUBE_KIRTAN = "https://www.youtube.com/@yogimanu-kirtan";
 const YOUTUBE_SPIRITUALITY = "https://www.youtube.com/@yogimanu";
 // ─────────────────────────────────────────────────────────────────────────
 
@@ -34,7 +34,7 @@ const channels = [
     title: "Kirtan",
     subtitle: "Devotion through song.",
     description:
-      "Join in and chant together. Kirtan is not a performance — it is shared prayer. A space where voices become one and the heart naturally opens. No musical experience needed.",
+      "Join in and chant together. Kirtan is not a performance – it is shared prayer. A space where voices become one and the heart naturally opens. No musical experience needed.",
     cta: "Listen to kirtan",
     href: YOUTUBE_KIRTAN,
     image: "/kirtan.png",
@@ -45,7 +45,7 @@ const channels = [
     title: "Spirituality",
     subtitle: "Honest conversations on the path.",
     description:
-      "Reflections on awareness, devotion, breath and what it means to live with more presence. Inspired by the teachings of Neem Karoli Baba — grounded, simple, and from lived experience.",
+      "Reflections on awareness, devotion, breath and what it means to live with more presence. Inspired by the teachings of Neem Karoli Baba – grounded, simple, and from lived experience.",
     cta: "Watch talks",
     href: YOUTUBE_SPIRITUALITY,
     image: "/manu2.jpeg",
@@ -73,7 +73,7 @@ export function ChannelsSection() {
               <em className="italic">One path.</em>
             </h2>
             <p className="font-sans text-base text-[#6D6D6D] leading-relaxed">
-              Everything Yogi Manu shares lives on YouTube — freely available, offered with care.
+              Everything Yogi Manu shares lives on YouTube – freely available, offered with care.
               Find what calls to you.
             </p>
           </div>

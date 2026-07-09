@@ -5,14 +5,14 @@ const milestones = [
     id: "construction",
     year: "2016",
     title: "Life Before Yoga",
-    body: "I worked in construction and played competitive basketball. Over time, chronic pain became normal — back, shoulders, knees. I didn't know there was another way.",
+    body: "I worked in construction and played competitive basketball. Over time, chronic pain became normal – back, shoulders, knees. I didn't know there was another way.",
     align: "right" as const,
   },
   {
     id: "discovery",
     year: "The First Session",
     title: "A Friend's Suggestion",
-    body: "A friend suggested yoga — not for spirituality, simply for pain. I was skeptical. After one session, my pain eased and my mind grew quiet. I felt still for the first time in years.",
+    body: "A friend suggested yoga – not for spirituality, simply for pain. I was skeptical. After one session, my pain eased and my mind grew quiet. I felt still for the first time in years.",
     align: "left" as const,
   },
   {
@@ -26,14 +26,14 @@ const milestones = [
     id: "devotion",
     year: "The Path Deepens",
     title: "From Movement to Mantra",
-    body: "Yoga led to meditation. Meditation led to mantra. Mantra opened into devotion. Hours of chanting brought experiences of profound peace and unity — not as destinations, but as invitations to continue with humility.",
+    body: "Yoga led to meditation. Meditation led to mantra. Mantra opened into devotion. Hours of chanting brought experiences of profound peace and unity – not as destinations, but as invitations to continue with humility.",
     align: "left" as const,
   },
   {
     id: "sharing",
     year: "Today",
     title: "Sharing What Was Given",
-    body: "Today I share what practice has revealed — yoga, breathwork, mantra, kirtan, devotion and honest conversation — with one simple hope: that these practices may support your own journey toward peace.",
+    body: "Today I share what practice has revealed – yoga, breathwork, mantra, kirtan, devotion and honest conversation – with one simple hope: that these practices may support your own journey toward peace.",
     align: "right" as const,
   },
 ];

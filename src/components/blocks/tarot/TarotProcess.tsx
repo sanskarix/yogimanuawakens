@@ -17,7 +17,7 @@ export function TarotProcess() {
                   These sessions are deeply rooted in spiritual practice. We do not simply sit and pull cards. Every session begins with sacred mantra.
                 </p>
                 <p className="font-sans text-base text-[#6D6D6D] leading-relaxed">
-                  As the chanting deepens and the mind grows quiet, the cards are drawn. The conclusion that emerges is not my own—it is simply what the practice reveals. 
+                  As the chanting deepens and the mind grows quiet, the cards are drawn. The conclusion that emerges is not my own–it is simply what the practice reveals.
                 </p>
                 <p className="font-sans text-base text-[#6D6D6D] leading-relaxed">
                   This is a space of reverence, designed to bring peace, reassurance, and profound clarity to whatever you are navigating in your life.
