@@ -5,7 +5,7 @@ const milestones = [
     id: "construction",
     year: "2016",
     title: "Life Before Yoga",
-    body: "I worked in construction and played competitive basketball. Over time, chronic pain became normal – back, shoulders, knees. I didn't know there was another way.",
+    body: "I worked in construction – heavy lifting, long days, physical labor that pushed the body hard. Outside of work I was lifting weights intensely. Over time, chronic pain settled in: back, shoulders, knees. I thought it was just the cost of that life.",
     align: "right" as const,
   },
   {

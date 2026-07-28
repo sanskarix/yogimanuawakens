@@ -12,9 +12,9 @@ function YTIcon({ size = 13, className = "" }: { size?: number; className?: stri
 }
 
 // ── Replace with real YouTube channel URLs ────────────────────────────────
-const YOUTUBE_YOGA = "https://www.youtube.com/@yogimanu-yoga";
-const YOUTUBE_KIRTAN = "https://www.youtube.com/@yogimanu-kirtan";
-const YOUTUBE_SPIRITUALITY = "https://www.youtube.com/@yogimanu";
+const YOUTUBE_YOGA = "https://www.youtube.com/@yogimanuawakens";
+const YOUTUBE_KIRTAN = "https://www.youtube.com/@yogimanumusic";
+const YOUTUBE_SPIRITUALITY = "https://www.youtube.com/@yogimanuawakens";
 // ─────────────────────────────────────────────────────────────────────────
 
 const channels = [
@@ -26,7 +26,7 @@ const channels = [
       "Simple practices to ease pain, build flexibility and reconnect with yourself. Whether you're just beginning or have practiced for years, these classes meet you exactly where you are.",
     cta: "Watch yoga classes",
     href: YOUTUBE_YOGA,
-    image: "/manu.jpeg",
+    image: "/images/generic4.jpeg",
     accent: "#5E7052",
   },
   {
@@ -37,7 +37,7 @@ const channels = [
       "Join in and chant together. Kirtan is not a performance – it is shared prayer. A space where voices become one and the heart naturally opens. No musical experience needed.",
     cta: "Listen to kirtan",
     href: YOUTUBE_KIRTAN,
-    image: "/kirtan.png",
+    image: "/images/kirtan1.jpg",
     accent: "#D79B42",
   },
   {
@@ -48,7 +48,7 @@ const channels = [
       "Reflections on awareness, devotion, breath and what it means to live with more presence. Inspired by the teachings of Neem Karoli Baba – grounded, simple, and from lived experience.",
     cta: "Watch talks",
     href: YOUTUBE_SPIRITUALITY,
-    image: "/manu2.jpeg",
+    image: "/images/generic3.jpg",
     accent: "#8B6A4D",
   },
 ];

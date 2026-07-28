@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
 
-export function SoundToggle() {
+export function SoundToggle({ className }: { className?: string }) {
   const [enabled, setEnabled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -12,13 +12,39 @@ export function SoundToggle() {
   // Hydration guard
   useEffect(() => {
     setMounted(true);
-    // Create audio element once on client
     const audio = new Audio("/kirtan.mp3");
     audio.loop = true;
     audio.volume = 0;
     audioRef.current = audio;
 
+    const playAttempt = () => {
+      audio.play().then(() => {
+        fadeVolume(audio, 0, 0.45, 2000);
+        setEnabled(true);
+      }).catch(() => {
+        // Fallback for browser autoplay block: play on first click, touch, or keydown
+        const startOnInteract = () => {
+          audio.play().then(() => {
+            fadeVolume(audio, 0, 0.45, 2000);
+            setEnabled(true);
+            cleanup();
+          }).catch((err) => console.log("Play on interact failed:", err));
+        };
+        const cleanup = () => {
+          window.removeEventListener("click", startOnInteract);
+          window.removeEventListener("touchstart", startOnInteract);
+          window.removeEventListener("keydown", startOnInteract);
+        };
+        window.addEventListener("click", startOnInteract);
+        window.addEventListener("touchstart", startOnInteract);
+        window.addEventListener("keydown", startOnInteract);
+      });
+    };
+
+    const timeoutId = setTimeout(playAttempt, 500);
+
     return () => {
+      clearTimeout(timeoutId);
       audio.pause();
       audio.src = "";
     };
@@ -47,7 +73,7 @@ export function SoundToggle() {
 
   return (
     <motion.div
-      className="absolute top-6 right-6 md:top-8 md:right-12 z-20"
+      className={className || "absolute top-6 right-6 md:top-8 md:right-12 z-20"}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 2 }}
@@ -70,10 +96,10 @@ export function SoundToggle() {
           aria-pressed={enabled}
           className={[
             "relative z-10 flex items-center gap-3 rounded-full",
-            "font-sans text-xs tracking-widest uppercase transition-all duration-500",
+            "font-sans text-xs tracking-[0.2em] uppercase transition-all duration-700 ease-out",
             enabled
-              ? "h-9 px-5 bg-white/10 border border-white/20 text-white/70 backdrop-blur-sm"
-              : "h-11 px-6 bg-[#D79B42] text-[#1a1208] shadow-[0_4px_24px_rgba(215,155,66,0.45)] hover:bg-[#e0a84a]",
+              ? "h-9 px-5 bg-white/5 border border-white/10 text-white/70 backdrop-blur-md shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:bg-white/10"
+              : "h-11 px-7 bg-gradient-to-tr from-[#D79B42] to-[#eeb966] text-[#1a1208] font-medium shadow-[0_8px_32px_rgba(215,155,66,0.3),inset_0_1px_1px_rgba(255,255,255,0.5)] hover:shadow-[0_12px_40px_rgba(215,155,66,0.5),inset_0_1px_1px_rgba(255,255,255,0.7)] hover:scale-105",
           ].join(" ")}
         >
           <AnimatePresence mode="wait" initial={false}>

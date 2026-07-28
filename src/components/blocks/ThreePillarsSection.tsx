@@ -11,7 +11,7 @@ const pillars = [
       "Yoga is where my own journey started. Not with flexibility or advanced poses – simply with a desire to live without pain. These practices help you move more freely, breathe more deeply and feel more at home in your body.",
     cta: "Explore the practice",
     href: "#journey",
-    image: "/yoga.png",
+    image: "/images/generic4.jpeg",
     imageAlt: "A quiet yoga practice",
   },
   {
@@ -22,7 +22,7 @@ const pillars = [
       "Kirtan is shared devotion. A space where voices become one. Joy and prayer often arrive together. You don't need to be a musician. You only need to show up open-hearted.",
     cta: "Listen together",
     href: "#community",
-    image: "/kirtan.png",
+    image: "/images/kirtan1.jpg",
     imageAlt: "A circle of people singing kirtan",
   },
   {
@@ -33,7 +33,7 @@ const pillars = [
       "The reflections shared here come from practice, not theory. They are honest conversations about awareness, breath, service and what it means to live with a little more presence each day.",
     cta: "Watch a conversation",
     href: "#journey",
-    image: "/hero.png",
+    image: "/images/generic3.jpg",
     imageAlt: "A quiet moment of reflection",
   },
 ];

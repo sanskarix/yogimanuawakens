@@ -1,4 +1,5 @@
 import { FadeIn } from "@/components/shared/FadeIn";
+import Link from "next/link";
 
 export function SupportSection() {
   return (
@@ -23,13 +24,13 @@ export function SupportSection() {
               contribute, your generosity helps make future videos, music,
               gatherings and teachings possible.
             </p>
-            <a
-              href="mailto:contact@yogimanu.com"
+            <Link
+              href="/tarot"
               id="support-main-cta"
-              className="inline-flex items-center justify-center h-10 px-6 font-sans text-xs tracking-widest uppercase border border-[#D79B42] text-[#D79B42] rounded-full hover:bg-[#D79B42] hover:text-[#262626] transition-all duration-300"
+              className="inline-flex items-center justify-center min-h-[40px] py-2.5 px-6 font-sans text-xs tracking-wider uppercase border border-[#D79B42] text-[#D79B42] rounded-2xl hover:bg-[#D79B42] hover:text-[#262626] transition-all duration-300"
             >
               Support the Journey
-            </a>
+            </Link>
           </div>
         </FadeIn>
       </div>

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { FadeIn } from "@/components/shared/FadeIn";
 
 export function CommunitySection() {
@@ -44,11 +45,12 @@ export function CommunitySection() {
 
               <ul className="space-y-4" role="list">
                 {[
-                  { label: "Watch on YouTube", href: "https://youtube.com/@yogimanu", external: true },
-                  { label: "Follow on Instagram", href: "https://instagram.com/yogimanu", external: true },
+                  { label: "Watch on YouTube", href: "https://www.youtube.com/@yogimanuawakens", external: true },
+                  { label: "Follow on Instagram", href: "https://www.instagram.com/yogimanuawakens", external: true },
                   { label: "Join the newsletter", href: "#support", external: false },
-                  { label: "Support the journey", href: "#support", external: false },
-                ].map(({ label, href, external }) => (
+                  { label: "Host Manu for a Retreat", href: "#bookings", external: false },
+                  { label: "Support the journey", href: "/tarot", external: false, isRoute: true },
+                ].map(({ label, href, external, isRoute }) => (
                   <li key={label}>
                     {external ? (
                       <a
@@ -61,6 +63,15 @@ export function CommunitySection() {
                         <span className="w-8 h-px bg-[#E8E1D7] group-hover:bg-[#D79B42] transition-colors duration-300" aria-hidden="true" />
                         {label}
                       </a>
+                    ) : isRoute ? (
+                      <Link
+                        href={href}
+                        id={`community-${label.toLowerCase().replace(/\s+/g, "-")}`}
+                        className="flex items-center gap-3 font-sans text-sm text-[#6D6D6D] hover:text-[#262626] transition-colors duration-300 group"
+                      >
+                        <span className="w-8 h-px bg-[#E8E1D7] group-hover:bg-[#D79B42] transition-colors duration-300" aria-hidden="true" />
+                        {label}
+                      </Link>
                     ) : (
                       <a
                         href={href}

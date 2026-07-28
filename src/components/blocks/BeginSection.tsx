@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { FadeIn } from "@/components/shared/FadeIn";
 
 const pathways = [
@@ -7,7 +8,7 @@ const pathways = [
     intent: "I Want to Heal",
     description:
       "Gentle yoga, breathwork, and simple practices to ease physical and emotional pain.",
-    href: "#journey",
+    href: "/tarot",
     accent: "#5E7052",
   },
   {
@@ -15,7 +16,7 @@ const pathways = [
     intent: "I Want More Peace",
     description:
       "Meditation, mantra, and reflections to quiet the restless mind and rediscover stillness.",
-    href: "#journey",
+    href: "https://www.youtube.com/@yogimanumusic",
     accent: "#8B6A4D",
   },
   {
@@ -23,16 +24,18 @@ const pathways = [
     intent: "I Feel Drawn to Devotion",
     description:
       "Kirtan, spiritual teachings, and the path of bhakti – practice rooted in love and surrender.",
-    href: "#community",
+    href: "https://www.youtube.com/@yogimanuawakens",
     accent: "#D79B42",
   },
 ];
 
 export function BeginSection() {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -62,10 +65,12 @@ export function BeginSection() {
           {pathways.map((p, i) => (
             <li key={p.id}>
               <FadeIn delay={i * 0.12}>
-                <a
+                <Link
                   href={p.href}
                   id={`begin-${p.id}`}
                   onClick={(e) => handleClick(e, p.href)}
+                  target={p.href.startsWith("http") ? "_blank" : undefined}
+                  rel={p.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="group block bg-[#F8F5EF] border border-[#E8E1D7] rounded-lg p-8 hover:border-[#D79B42]/40 transition-all duration-500 h-full"
                 >
                   <div
@@ -82,7 +87,7 @@ export function BeginSection() {
                   <span className="font-sans text-xs tracking-wider uppercase text-[#6D6D6D] group-hover:text-[#262626] transition-colors duration-300">
                     Explore →
                   </span>
-                </a>
+                </Link>
               </FadeIn>
             </li>
           ))}

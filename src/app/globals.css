@@ -29,33 +29,31 @@
   --spacing-16: 128px;
 }
 
-/* ─── Base Styles ─────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  body {
+    background-color: #F8F5EF;
+    color: #262626;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
 
-body {
-  background-color: #F8F5EF;
-  color: #262626;
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  font-size: 18px;
-  line-height: 1.7;
-}
-
-/* ─── Typography ──────────────────────────────────────────────────────────── */
-
-h1, h2, h3, h4, h5 {
-  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
-  line-height: 1.1;
-  font-weight: 400;
-  color: #262626;
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+    line-height: 1.1;
+    font-weight: 400;
+    color: #262626;
+  }
 }
 
 /* ─── Utilities ──────────────────────────────────────────────────────────── */

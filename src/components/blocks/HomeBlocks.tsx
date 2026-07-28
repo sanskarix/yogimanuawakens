@@ -10,7 +10,7 @@ export function Hero() {
     <Section spacing="none" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 z-0">
         <ImageWrapper
-          src="/images/hero-bg.jpg" // Placeholder path, we will add images later or leave for user
+          src="/images/photo1.jpg" // Real photo
           alt="Yogi Manu"
           fill
           imageClassName="opacity-80"
@@ -21,8 +21,8 @@ export function Hero() {
 
       <Container className="relative z-10 text-center">
         <Reveal duration={1.2} direction="up" className="max-w-4xl mx-auto flex flex-col items-center">
-          <Heading level={1} variant="display" className="mb-6">
-            Walking the Path of Yoga, Devotion & Inner Awakening.
+          <Heading level={1} variant="display" className="mb-6 text-white">
+            Walking the Path of Yoga, Devotion & Presence.
           </Heading>
           <Text size="large" className="max-w-2xl text-brand-text mb-12">
             Through yoga, mantra, kirtan and spiritual reflection, I share the practices that transformed my own life–from chronic pain to inner peace.

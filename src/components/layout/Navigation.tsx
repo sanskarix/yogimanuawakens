@@ -2,18 +2,18 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#channels", label: "Channels" },
-  { href: "#journey", label: "Journey" },
-  { href: "#community", label: "Community" },
-  { href: "#support", label: "Support" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#channels", label: "Channels" },
+  { href: "/#bookings", label: "Offerings" },
+  { href: "/shop", label: "Shop" },
+  { href: "/#community", label: "Community" },
 ];
 
 function scrollToSection(id: string) {
-  const el = document.querySelector(id);
+  const el = document.querySelector(id.replace("/", ""));
   if (!el) return;
   const top = el.getBoundingClientRect().top + window.scrollY - 72;
   window.scrollTo({ top, behavior: "smooth" });
@@ -22,6 +22,8 @@ function scrollToSection(id: string) {
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -30,9 +32,14 @@ export function Navigation() {
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     setMenuOpen(false);
-    scrollToSection(href);
+    if (href.startsWith("/#")) {
+      if (pathname === "/") {
+        e.preventDefault();
+        scrollToSection(href);
+      }
+      // If not on home page, let next/link handle routing to /#id
+    }
   };
 
   return (
@@ -65,7 +72,7 @@ export function Navigation() {
         <ul className="hidden md:flex items-center gap-9" role="list">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
-              <a
+              <Link
                 href={href}
                 onClick={(e) => handleClick(e, href)}
                 className={[
@@ -78,7 +85,7 @@ export function Navigation() {
                 ].join(" ")}
               >
                 {label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -111,13 +118,13 @@ export function Navigation() {
         <ul className="px-6 pt-4 pb-6 flex flex-col gap-5" role="list">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
-              <a
+              <Link
                 href={href}
                 onClick={(e) => handleClick(e, href)}
                 className="font-sans text-[11px] tracking-[0.18em] uppercase text-[#6D6D6D] hover:text-[#262626] transition-colors duration-300"
               >
                 {label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

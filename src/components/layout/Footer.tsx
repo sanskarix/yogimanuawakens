@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 const footerLinks = [
   { href: "#about", label: "About" },
@@ -20,13 +21,20 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
 
           {/* Brand */}
-          <div className="space-y-4">
+          <div className="space-y-5">
             <a
               href="#"
               onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              className="font-serif text-2xl text-[#262626] hover:text-[#D79B42] transition-colors duration-300"
+              className="inline-flex flex-col gap-4 font-serif text-2xl text-[#262626] hover:text-[#D79B42] transition-colors duration-300"
             >
-              Yogi Manu
+              <Image
+                src="/logo.png"
+                alt="Yogi Manu Logo"
+                width={80}
+                height={80}
+                className="rounded-[15%] object-cover"
+              />
+              <span>Yogi Manu</span>
             </a>
             <p className="font-sans text-sm text-[#6D6D6D] leading-relaxed max-w-[220px]">
               Walking the path with gratitude.

@@ -3,12 +3,12 @@ import { HeroSection } from "@/components/blocks/HeroSection";
 import { ChannelsSection } from "@/components/blocks/ChannelsSection";
 import { AboutSection } from "@/components/blocks/AboutSection";
 import { JourneySection } from "@/components/blocks/JourneySection";
+import { MaharajJiSection } from "@/components/blocks/MaharajJiSection";
+import { OfferingsSection } from "@/components/blocks/OfferingsSection";
 import { BeginSection } from "@/components/blocks/BeginSection";
 import { DailyPracticeSection } from "@/components/blocks/DailyPracticeSection";
-import { HomeTarotSection } from "@/components/blocks/HomeTarotSection";
 import { CommunitySection } from "@/components/blocks/CommunitySection";
 import { SupportSection } from "@/components/blocks/SupportSection";
-import { ContactSection } from "@/components/blocks/ContactSection";
 
 export const metadata: Metadata = {
   title: "Yogi Manu | Yoga, Kirtan & Spiritual Teachings",
@@ -29,12 +29,12 @@ export default function HomePage() {
       <AboutSection />
       <ChannelsSection />
       <JourneySection />
+      <MaharajJiSection />
+      <OfferingsSection />
       <BeginSection />
       <DailyPracticeSection />
-      <HomeTarotSection />
       <CommunitySection />
       <SupportSection />
-      <ContactSection />
     </>
   );
 }
