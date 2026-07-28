@@ -30,7 +30,7 @@ export function TarotProcess() {
           <FadeIn delay={0.15}>
             <div className="relative aspect-[4/5] md:aspect-[3/2] lg:aspect-[4/5] rounded-xl overflow-hidden max-w-[520px] mx-auto lg:mx-0">
               <Image
-                src="/manu.jpeg"
+                src="/yoga2.jpeg"
                 alt="Yogi Manu in practice"
                 fill
                 className="object-cover object-center grayscale opacity-80"
