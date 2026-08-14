@@ -2,13 +2,14 @@
 
 import { useEffect } from "react";
 import { FadeIn } from "@/components/shared/FadeIn";
+import { motion } from "framer-motion";
 
 // ─── Configure Cal.com Booking Links here ──────────────────────────────
 const CAL_USERNAME = "yogimanu"; // Your Cal.com username
 const CAL_SLUGS = {
-  single: "single-card",      // Event type slug for $20 Single Card
+  single: "single-card",      // Event type slug for $25 Single Card
   fourCard: "four-card-spread", // Event type slug for $50 Four Card Spread
-  video: "recorded-reading",  // Event type slug for $80 Recorded Reading (originally $54)
+  video: "recorded-reading",  // Event type slug for $85 Recorded Reading (originally $54)
   live: "live-session",       // Event type slug for $150 Live Session (originally $108)
 };
 // ───────────────────────────────────────────────────────────────────────
@@ -17,7 +18,7 @@ const offerings = [
   {
     id: "single",
     title: "Single Card Pull",
-    price: "$20",
+    price: "$25",
     duration: "Delivered in 24 hours",
     subtitle: "A direct answer to one sincere question.",
     description:
@@ -37,15 +38,15 @@ const offerings = [
     title: "Four Card Spread",
     price: "$50",
     duration: "Delivered in 48 hours",
-    subtitle: "Past, present, future & spiritual guidance.",
+    subtitle: "Spiritual guidance.",
     description:
-      "Share your situation or question. I sit in mantra, pull 3 tarot cards for your timeline and 1 oracle card for deeper spiritual counsel. You receive a photo of your cards and a typed reading.",
+      "Share your situation or question. I sit in mantra, pull 3 tarot cards and 1 oracle card for deeper spiritual counsel. You receive a photo of your cards and a typed reading.",
     features: [
-      "3 Tarot cards (Past, Present, Future)",
+      "3 Tarot cards",
       "1 Oracle card (Spiritual guidance)",
       "Mantra practice & intention holding",
       "Photo of the drawn cards",
-      "Detailed typed interpretation",
+      "Typed interpretation",
       "Delivered within 48 hours",
     ],
     cta: "Book Spread",
@@ -55,8 +56,8 @@ const offerings = [
   {
     id: "video",
     title: "Recorded Reading",
-    price: "$80",
-    duration: "Delivered in 48 hours",
+    price: "$85",
+    duration: "Delivered in 72 hours",
     subtitle: "A personal reading recorded in sacred space.",
     description:
       "I sit in quiet practice and chant on your behalf. I pull around 6 cards to explore your situation deeply, recording a personal video explaining the spread and messages.",
@@ -65,7 +66,7 @@ const offerings = [
       "Around 6 cards drawn",
       "Private video recording (20-30 min)",
       "Deep card interpretation & advice",
-      "Delivered within 48 hours",
+      "Delivered within 72 hours",
     ],
     cta: "Book Video",
     calLink: `${CAL_USERNAME}/${CAL_SLUGS.video}`,
@@ -153,7 +154,7 @@ export function TarotOptions() {
             <span className="block font-sans text-[10px] tracking-[0.25em] uppercase text-[#D79B42] mb-3">
               Offerings
             </span>
-            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] font-light text-[#262626] leading-[1.1] mb-5">
+            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] font-light text-[#262626] leading-[1.1] tracking-tight mb-5">
               Four ways to connect.
             </h2>
             <p className="font-sans text-base text-[#6D6D6D] max-w-[480px] mx-auto leading-relaxed">
@@ -166,12 +167,19 @@ export function TarotOptions() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-[1280px] mx-auto items-stretch">
           {offerings.map((offering, i) => (
             <FadeIn key={offering.id} delay={i * 0.12}>
-              <div
+              <motion.div
+                whileHover={{
+                  y: -6,
+                  borderColor: offering.featured ? "#D79B42" : "rgba(215, 155, 66, 0.5)",
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03)"
+                }}
+                whileTap={{ y: 0, scale: 0.98 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.4 }}
                 className={[
-                  "relative flex flex-col h-full rounded-[32px] p-8 md:p-10 border transition-all duration-700 hover:shadow-xl",
+                  "relative flex flex-col h-full rounded-[32px] p-8 md:p-10 border",
                   offering.featured
-                    ? "bg-[#262626] border-[#262626] text-[#FCFAF7] hover:border-[#D79B42]/80 xl:scale-[1.03]"
-                    : "bg-white/40 border-[#E8E1D7] text-[#262626] hover:border-[#D79B42]/50",
+                    ? "bg-[#262626] border-[#262626] text-[#FCFAF7] xl:scale-[1.03]"
+                    : "bg-white/40 backdrop-blur-md border-[#E8E1D7] text-[#262626]",
                 ].join(" ")}
               >
                 {/* Popular/Featured Badge */}
@@ -231,21 +239,24 @@ export function TarotOptions() {
 
                 {/* Booking Button (Triggers Cal.com modal) */}
                 <div className="pt-10">
-                  <button
+                  <motion.button
                     data-cal-link={offering.calLink}
                     data-cal-config='{"layout":"month_view"}'
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ type: "spring", bounce: 0, duration: 0.3 }}
                     className={[
-                      "flex items-center justify-center w-full min-h-[48px] py-3.5 px-4 rounded-2xl font-sans text-xs tracking-wider uppercase font-semibold cursor-pointer transition-all duration-500 hover:scale-[1.02]",
+                      "flex items-center justify-center w-full min-h-[48px] py-3.5 px-4 rounded-2xl font-sans text-xs tracking-wider uppercase font-semibold cursor-pointer transition-colors duration-200",
                       offering.featured
                         ? "bg-[#D79B42] text-[#1a1208] hover:bg-[#c08a38] hover:shadow-[0_8px_24px_rgba(215,155,66,0.35)]"
                         : "bg-[#262626] text-[#FCFAF7] hover:bg-[#D79B42] hover:text-[#1a1208] hover:shadow-[0_8px_24px_rgba(38,38,38,0.15)]",
                     ].join(" ")}
                   >
                     {offering.cta}
-                  </button>
+                  </motion.button>
                 </div>
 
-              </div>
+              </motion.div>
             </FadeIn>
           ))}
         </div>

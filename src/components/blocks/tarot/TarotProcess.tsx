@@ -9,7 +9,7 @@ export function TarotProcess() {
           {/* Left Text */}
           <FadeIn>
             <div className="space-y-8 max-w-[520px]">
-              <h2 className="font-serif text-[clamp(2rem,4vw,3.2rem)] font-light text-[#262626] leading-[1.1]">
+              <h2 className="font-serif text-[clamp(2rem,4vw,3.2rem)] font-light text-[#262626] leading-[1.1] tracking-tight">
                 The Process.
               </h2>
               <div className="space-y-6">
@@ -30,13 +30,12 @@ export function TarotProcess() {
           <FadeIn delay={0.15}>
             <div className="relative aspect-[4/5] md:aspect-[3/2] lg:aspect-[4/5] rounded-xl overflow-hidden max-w-[520px] mx-auto lg:mx-0">
               <Image
-                src="/yoga2.jpeg"
-                alt="Yogi Manu in practice"
+                src="/images/generic2.jpg"
+                alt="Tarot cards and mantra space"
                 fill
-                className="object-cover object-center grayscale opacity-80"
+                className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-[#D79B42]/10 mix-blend-color" />
             </div>
           </FadeIn>
         </div>

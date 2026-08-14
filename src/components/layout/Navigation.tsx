@@ -20,16 +20,9 @@ function scrollToSection(id: string) {
 }
 
 export function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setMenuOpen(false);
@@ -42,15 +35,10 @@ export function Navigation() {
     }
   };
 
+  const isHome = pathname === "/";
+
   return (
-    <header
-      className={[
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-700",
-        scrolled
-          ? "bg-[#FCFAF7]/96 backdrop-blur-md shadow-[0_1px_0_0_#E8E1D7]"
-          : "bg-transparent",
-      ].join(" ")}
-    >
+    <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <nav
         className="max-w-[1280px] mx-auto px-6 lg:px-16 h-16 md:h-[72px] flex items-center justify-between"
         aria-label="Main navigation"
@@ -61,7 +49,7 @@ export function Navigation() {
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
           className={[
             "font-serif text-[23px] tracking-wide transition-colors duration-500 select-none",
-            scrolled ? "text-[#262626] hover:text-[#D79B42]" : "text-white hover:text-[#D79B42]/90",
+            isHome ? "text-white hover:text-[#D79B42]/90" : "text-[#262626] hover:text-[#D79B42]",
           ].join(" ")}
           aria-label="Yogi Manu – scroll to top"
         >
@@ -78,7 +66,7 @@ export function Navigation() {
                 className={[
                   "font-sans text-[11px] tracking-[0.18em] uppercase",
                   "transition-colors duration-300 relative",
-                  scrolled ? "text-[#6D6D6D] hover:text-[#262626]" : "text-white/80 hover:text-white",
+                  isHome ? "text-white/80 hover:text-white" : "text-[#6D6D6D] hover:text-[#262626]",
                   "after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[1px]",
                   "after:bg-[#D79B42] after:transition-[width] after:duration-300",
                   "hover:after:w-full",
@@ -95,7 +83,7 @@ export function Navigation() {
           id="mobile-menu-toggle"
           className={[
             "md:hidden p-2 transition-colors duration-500",
-            scrolled ? "text-[#262626]" : "text-white",
+            isHome ? "text-white" : "text-[#262626]",
           ].join(" ")}
           onClick={() => setMenuOpen((v) => !v)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
