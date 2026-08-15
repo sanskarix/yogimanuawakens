@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { FadeIn } from "@/components/shared/FadeIn";
 
@@ -27,6 +26,17 @@ const offeringsList = [
     cta: "Invite Manu",
     href: "/retreats",
     accent: "#8B6A4D",
+  },
+  {
+    id: "onsite",
+    badge: "Corporate & Property",
+    title: "Onsite Yoga & Restore",
+    description:
+      "Bring professional, restorative yoga instruction directly to your hotel, residential community, or workplace. We provide everything needed – including mats, setup, and cleaning – to help guests and residents reset.",
+    image: "/yoga.jpeg",
+    cta: "Explore Program",
+    href: "/onsite-yoga-restore",
+    accent: "#5E7052",
   },
 ];
 
@@ -55,7 +65,7 @@ export function OfferingsSection() {
         </FadeIn>
 
         {/* Offerings Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {offeringsList.map((item, index) => (
             <FadeIn key={item.id} delay={index * 0.15}>
               <div className="group relative flex flex-col h-full bg-[#F8F5EF] border border-[#E8E1D7] rounded-[28px] overflow-hidden hover:border-[#D79B42]/50 hover:shadow-lg transition-all duration-700">
