@@ -1,18 +1,31 @@
 "use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const footerLinks = [
-  { href: "#about", label: "About" },
-  { href: "#practice", label: "Practice" },
-  { href: "#journey", label: "Journey" },
-  { href: "#community", label: "Community" },
-  { href: "#support", label: "Support" },
+  { href: "/#about", label: "About" },
+  { href: "/#practice", label: "Practice" },
+  { href: "/#journey", label: "Journey" },
+  { href: "/#community", label: "Community" },
+  { href: "/#support", label: "Support" },
 ];
 
 export function Footer() {
-  const scrollTo = (id: string) => {
-    const el = document.querySelector(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (isHome) {
+      e.preventDefault();
+      const id = href.replace("/", ""); // e.g. "/#about" -> "#about"
+      const el = document.querySelector(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }
   };
 
   return (
@@ -22,9 +35,14 @@ export function Footer() {
 
           {/* Brand */}
           <div className="space-y-5">
-            <a
-              href="#"
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            <Link
+              href="/"
+              onClick={(e) => {
+                if (isHome) {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className="inline-flex flex-col gap-4 font-serif text-2xl text-[#262626] hover:text-[#D79B42] transition-colors duration-300"
             >
               <Image
@@ -35,7 +53,7 @@ export function Footer() {
                 className="rounded-[15%] object-cover"
               />
               <span>Yogi Manu</span>
-            </a>
+            </Link>
             <p className="font-sans text-sm text-[#6D6D6D] leading-relaxed max-w-[220px]">
               Walking the path with gratitude.
             </p>
@@ -46,13 +64,13 @@ export function Footer() {
             <ul className="flex flex-col gap-3" role="list">
               {footerLinks.map(({ href, label }) => (
                 <li key={href}>
-                  <a
+                  <Link
                     href={href}
-                    onClick={(e) => { e.preventDefault(); scrollTo(href); }}
+                    onClick={(e) => handleClick(e, href)}
                     className="font-sans text-sm text-[#6D6D6D] hover:text-[#262626] transition-colors duration-300"
                   >
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

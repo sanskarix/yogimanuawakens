@@ -9,7 +9,7 @@ const inclusions = [
   },
   {
     icon: Dumbbell,
-    title: "Premium Mats & Props",
+    title: "Premium Props",
     description: "We provide high-quality yoga mats, blocks, and straps for all participants.",
   },
   {
@@ -31,9 +31,9 @@ const inclusions = [
 
 export function WhatsIncluded() {
   return (
-    <section className="bg-[#FCFAF7] py-24 md:py-36 border-t border-[#E8E1D7]">
+    <section className="bg-[#FCFAF7] py-16 md:py-36 border-t border-[#E8E1D7]">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-16">
-        
+
         {/* Header */}
         <FadeIn>
           <div className="max-w-[560px] mb-16 md:mb-24">

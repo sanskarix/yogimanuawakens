@@ -4,7 +4,7 @@ import { FadeIn } from "@/components/shared/FadeIn";
 export function GratitudeSection() {
   return (
     <section
-      className="bg-[#F8F5EF] py-24 md:py-36"
+      className="bg-[#F8F5EF] py-16 md:py-36"
       aria-labelledby="gratitude-heading"
     >
       <div className="max-w-[800px] mx-auto px-6 md:px-12 text-center">

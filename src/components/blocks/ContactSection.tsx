@@ -16,7 +16,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="bg-[#FCFAF7] py-24 md:py-36 border-t border-[#E8E1D7]">
+    <section id="contact" className="bg-[#FCFAF7] py-16 md:py-36 border-t border-[#E8E1D7]">
       <div className="max-w-[760px] mx-auto px-6 lg:px-16">
         <FadeIn>
           <div className="text-center mb-16 md:mb-20">
@@ -79,7 +79,7 @@ export function ContactSection() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="inline-flex items-center justify-center h-12 px-10 font-sans text-xs tracking-widest uppercase bg-[#262626] text-[#FCFAF7] rounded-full hover:bg-[#D79B42] transition-colors duration-500 disabled:opacity-50 disabled:hover:bg-[#262626]"
+                  className="inline-flex items-center justify-center min-h-[48px] px-8 font-sans text-xs tracking-wider uppercase font-semibold bg-[#262626] text-[#FCFAF7] rounded-2xl hover:bg-[#D79B42] transition-colors duration-500 disabled:opacity-50 disabled:hover:bg-[#262626]"
                 >
                   {status === "submitting" ? "Sending..." : "Send Message"}
                 </button>

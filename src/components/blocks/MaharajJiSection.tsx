@@ -3,7 +3,7 @@ import { FadeIn } from "@/components/shared/FadeIn";
 
 export function MaharajJiSection() {
   return (
-    <section id="maharaj-ji" className="relative bg-[#FCFAF7] py-32 md:py-44 border-t border-[#E8E1D7]">
+    <section id="maharaj-ji" className="relative bg-[#FCFAF7] py-20 md:py-44 border-t border-[#E8E1D7]">
       <div className="relative max-w-[1280px] mx-auto px-6 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
 

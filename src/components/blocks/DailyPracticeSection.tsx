@@ -15,7 +15,7 @@ export function DailyPracticeSection() {
   return (
     <section
       id="daily-practice"
-      className="bg-[#F8F5EF] py-24 md:py-36"
+      className="bg-[#F8F5EF] py-16 md:py-36"
       aria-labelledby="daily-practice-heading"
     >
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">

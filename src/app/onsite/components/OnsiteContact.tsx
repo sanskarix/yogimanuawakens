@@ -15,7 +15,7 @@ export function OnsiteContact() {
   };
 
   return (
-    <section id="property-inquiry" className="bg-[#F8F5EF] py-24 md:py-36 border-t border-[#E8E1D7]">
+    <section id="property-inquiry" className="bg-[#F8F5EF] py-16 md:py-36 border-t border-[#E8E1D7]">
       <div className="max-w-[760px] mx-auto px-6">
         
         <FadeIn>
@@ -42,7 +42,7 @@ export function OnsiteContact() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-8 bg-[#FCFAF7]/40 border border-[#E8E1D7] rounded-3xl p-8 md:p-12 shadow-sm">
+            <form onSubmit={handleSubmit} className="space-y-8 bg-[#FCFAF7]/40 border border-[#E8E1D7] rounded-3xl p-5 md:p-12 shadow-sm">
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
@@ -131,7 +131,7 @@ export function OnsiteContact() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="inline-flex items-center justify-center h-12 px-10 font-sans text-xs tracking-widest uppercase bg-[#262626] text-[#FCFAF7] rounded-full hover:bg-[#5E7052] transition-colors duration-500 disabled:opacity-50 cursor-pointer"
+                  className="inline-flex items-center justify-center min-h-[48px] px-8 font-sans text-xs tracking-wider uppercase font-semibold bg-[#262626] text-[#FCFAF7] rounded-2xl hover:bg-[#5E7052] transition-colors duration-500 disabled:opacity-50 cursor-pointer"
                 >
                   {status === "submitting" ? "Sending Inquiry..." : "Submit Inquiry"}
                 </button>

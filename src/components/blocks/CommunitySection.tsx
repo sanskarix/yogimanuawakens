@@ -11,7 +11,7 @@ export function CommunitySection() {
   return (
     <section
       id="community"
-      className="bg-[#FCFAF7] py-24 md:py-36 border-t border-[#E8E1D7]"
+      className="bg-[#FCFAF7] py-16 md:py-36 border-t border-[#E8E1D7]"
       aria-labelledby="community-heading"
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-16">

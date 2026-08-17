@@ -3,15 +3,13 @@
 import { useEffect } from "react";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { motion } from "framer-motion";
+import Script from "next/script";
+
+
 
 // ─── Configure Cal.com Booking Links here ──────────────────────────────
-const CAL_USERNAME = "yogimanu"; // Your Cal.com username
-const CAL_SLUGS = {
-  single: "single-card",      // Event type slug for $25 Single Card
-  fourCard: "four-card-spread", // Event type slug for $50 Four Card Spread
-  video: "recorded-reading",  // Event type slug for $85 Recorded Reading (originally $54)
-  live: "live-session",       // Event type slug for $150 Live Session (originally $108)
-};
+// Live Session event attributes are embedded directly below.
+// Other offerings are asynchronous and do not require scheduling.
 // ───────────────────────────────────────────────────────────────────────
 
 const offerings = [
@@ -30,7 +28,6 @@ const offerings = [
       "Delivered within 24 hours",
     ],
     cta: "Request Reading",
-    calLink: `${CAL_USERNAME}/${CAL_SLUGS.single}`,
     featured: false,
   },
   {
@@ -50,7 +47,6 @@ const offerings = [
       "Delivered within 48 hours",
     ],
     cta: "Book Spread",
-    calLink: `${CAL_USERNAME}/${CAL_SLUGS.fourCard}`,
     featured: false,
   },
   {
@@ -69,7 +65,6 @@ const offerings = [
       "Delivered within 72 hours",
     ],
     cta: "Book Video",
-    calLink: `${CAL_USERNAME}/${CAL_SLUGS.video}`,
     featured: false,
   },
   {
@@ -88,7 +83,6 @@ const offerings = [
     ],
     badge: "Most Immersive",
     cta: "Book Live",
-    calLink: `${CAL_USERNAME}/${CAL_SLUGS.live}`,
     featured: true,
   },
 ];
@@ -96,58 +90,121 @@ const offerings = [
 export function TarotOptions() {
   // Initialize Cal.com Embed script
   useEffect(() => {
-    (function (C: any, A: any, L: any) {
+    (function (C: any, A: string, L: string) {
       const p = function (a: any, ar: any) {
         a.q.push(ar);
       };
-      const c = (C.Cal =
+      const d = C.document;
+      C.Cal =
         C.Cal ||
         function () {
-          const a = c as any;
-          a.q = a.q || [];
-          for (let i = 0; i < arguments.length; i++) {
-            p(a, arguments[i]);
+          const cal = C.Cal;
+          const ar = arguments;
+          if (!cal.loaded) {
+            cal.ns = {};
+            cal.q = cal.q || [];
+            d.head.appendChild(d.createElement("script")).src = A;
+            cal.loaded = true;
           }
-        });
-      c.sn = "v1";
-      if (document.getElementById("cal-embed-script")) return;
-      const s = A.createElement("script");
-      s.id = "cal-embed-script";
-      s.src = "https://app.cal.com/embed/embed.js";
-      s.async = true;
-      const entries = A.getElementsByTagName("script")[0];
-      entries?.parentNode?.insertBefore(s, entries);
-    })(window, document, ["script"]);
+          if (ar[0] === L) {
+            const api: any = function () {
+              p(api, arguments);
+            };
+            const namespace = ar[1];
+            api.q = api.q || [];
+            if (typeof namespace === "string") {
+              cal.ns[namespace] = cal.ns[namespace] || api;
+              p(cal.ns[namespace], ar);
+              p(cal, ["initNamespace", namespace]);
+            } else {
+              p(cal, ar);
+            }
+            return;
+          }
+          p(cal, ar);
+        };
+    })(window as any, "https://app.cal.com/embed/embed.js", "init");
 
-    // Set up Cal overlay preferences once loaded
-    const initCal = () => {
-      const Cal = (window as any).Cal;
-      if (Cal) {
-        Cal("init", { origin: "https://cal.com" });
-        Cal("ui", {
-          styles: {
-            branding: {
-              brandColor: "#262626",
-            },
-          },
-          hideEventTypeDetails: false,
-          layout: "month_view",
-        });
-      }
-    };
-
-    // Attempt immediately and attach to onload as fallback
-    initCal();
-    const scriptEl = document.getElementById("cal-embed-script");
-    if (scriptEl) {
-      scriptEl.onload = initCal;
+    const Cal = (window as any).Cal;
+    if (Cal) {
+      Cal("init", "live-tarot-reading", { origin: "https://app.cal.com" });
+      Cal.config = Cal.config || {};
+      Cal.config.forwardQueryParams = true;
+      Cal.ns["live-tarot-reading"]("ui", {
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
     }
   }, []);
 
+  // Shadow DOM styling to ensure Stripe Buy Buttons are stretched correctly once initialized.
+  useEffect(() => {
+    // Style the custom component's Shadow DOM iframe once it renders
+    const styleIframe = (btnId: string) => {
+      const btn = document.getElementById(btnId);
+      if (btn && btn.shadowRoot) {
+        const iframe = btn.shadowRoot.querySelector("iframe");
+        if (iframe) {
+          if (iframe.getAttribute("data-styled") === "true") return true;
+
+          const styleEl = document.createElement("style");
+          styleEl.textContent = `
+            iframe {
+              width: 100% !important;
+              height: 100% !important;
+              min-height: 100% !important;
+              max-height: 100% !important;
+              min-width: 100% !important;
+              max-width: 100% !important;
+              display: block !important;
+            }
+            .stripe-buy-button-container, div, slot {
+              width: 100% !important;
+              height: 100% !important;
+              display: block !important;
+            }
+          `;
+          btn.shadowRoot.appendChild(styleEl);
+          iframe.setAttribute("data-styled", "true");
+          return true;
+        }
+      }
+      return false;
+    };
+
+    const interval = setInterval(() => {
+      const ids = ["stripe-btn-single", "stripe-btn-fourCard", "stripe-btn-video"];
+      const allDone = ids.every(id => styleIframe(id));
+      if (allDone) {
+        clearInterval(interval);
+      }
+    }, 100);
+
+    const timeout = setTimeout(() => {
+      clearInterval(interval);
+    }, 8000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, []);
+
+
+
+  const getMailtoLink = (offering: typeof offerings[0]) => {
+    const subject = encodeURIComponent(`Request: ${offering.title} - Yogi Manu`);
+    const body = encodeURIComponent(
+      `Namaste Yogi Manu,\n\nI would like to request a ${offering.title} reading (${offering.price}).\n\nMy question/situation:\n[Please describe your situation or question here]\n\nThank you!`
+    );
+    return `mailto:contact@yogimanu.com?subject=${subject}&body=${body}`;
+  };
+
   return (
-    <section className="bg-[#FCFAF7] py-24 md:py-36 border-t border-[#E8E1D7]">
+    <section className="bg-[#FCFAF7] py-16 md:py-36 border-t border-[#E8E1D7]">
+      <Script src="https://js.stripe.com/v3/buy-button.js" async />
       <div className="max-w-[1280px] mx-auto px-6 lg:px-16">
-        
+
         {/* Section Header */}
         <FadeIn>
           <div className="text-center mb-20 md:mb-28">
@@ -175,8 +232,16 @@ export function TarotOptions() {
                 }}
                 whileTap={{ y: 0, scale: 0.98 }}
                 transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+                {...(offering.id === "live"
+                  ? {
+                    "data-cal-link": "yogimanu/live-tarot-reading",
+                    "data-cal-namespace": "live-tarot-reading",
+                    "data-cal-config": '{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}',
+                  }
+                  : {})}
                 className={[
                   "relative flex flex-col h-full rounded-[32px] p-8 md:p-10 border",
+                  offering.id === "live" ? "cursor-pointer" : "",
                   offering.featured
                     ? "bg-[#262626] border-[#262626] text-[#FCFAF7] xl:scale-[1.03]"
                     : "bg-white/40 backdrop-blur-md border-[#E8E1D7] text-[#262626]",
@@ -237,23 +302,84 @@ export function TarotOptions() {
                   </div>
                 </div>
 
-                {/* Booking Button (Triggers Cal.com modal) */}
+                {/* Booking Button (Triggers Cal.com modal for Live Session, Stripe checkouts for Single Card Pull and Four Card Spread, mailto link for others) */}
                 <div className="pt-10">
-                  <motion.button
-                    data-cal-link={offering.calLink}
-                    data-cal-config='{"layout":"month_view"}'
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                    className={[
-                      "flex items-center justify-center w-full min-h-[48px] py-3.5 px-4 rounded-2xl font-sans text-xs tracking-wider uppercase font-semibold cursor-pointer transition-colors duration-200",
-                      offering.featured
-                        ? "bg-[#D79B42] text-[#1a1208] hover:bg-[#c08a38] hover:shadow-[0_8px_24px_rgba(215,155,66,0.35)]"
-                        : "bg-[#262626] text-[#FCFAF7] hover:bg-[#D79B42] hover:text-[#1a1208] hover:shadow-[0_8px_24px_rgba(38,38,38,0.15)]",
-                    ].join(" ")}
-                  >
-                    {offering.cta}
-                  </motion.button>
+                  {offering.id === "live" ? (
+                    <motion.button
+                      data-cal-link="yogimanu/live-tarot-reading"
+                      data-cal-namespace="live-tarot-reading"
+                      data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+                      className={[
+                        "flex items-center justify-center w-full min-h-[48px] py-3.5 px-4 rounded-2xl font-sans text-xs tracking-wider uppercase font-semibold cursor-pointer transition-colors duration-200",
+                        offering.featured
+                          ? "bg-[#D79B42] text-[#1a1208] hover:bg-[#c08a38] hover:shadow-[0_8px_24px_rgba(215,155,66,0.35)]"
+                          : "bg-[#262626] text-[#FCFAF7] hover:bg-[#D79B42] hover:text-[#1a1208] hover:shadow-[0_8px_24px_rgba(38,38,38,0.15)]",
+                      ].join(" ")}
+                    >
+                      {offering.cta}
+                    </motion.button>
+                  ) : ["single", "fourCard", "video"].includes(offering.id) ? (
+                    <div className="relative group/btn w-full min-h-[48px] rounded-2xl overflow-hidden cursor-pointer">
+                      {/* Stripe Buy Button placed BEHIND with opacity 1 to bypass clickjacking protection */}
+                      <div className="absolute inset-0 z-0">
+                        {offering.id === "single" && (
+                          <stripe-buy-button
+                            id="stripe-btn-single"
+                            buy-button-id="buy_btn_1U4kUwIdvpDSvxu1H24nu5ik"
+                            publishable-key="pk_live_51NgzQEIdvpDSvxu1Zb1Jk1a1WdIpcoUAQLcCFhMwzT8CkooM6HbhFvrjwDz588nUdaU6ejJCfwjpchR2RpTPgdfY00nmvldEA7"
+                            style={{ width: "100%", height: "100%", display: "block" }}
+                          />
+                        )}
+                        {offering.id === "fourCard" && (
+                          <stripe-buy-button
+                            id="stripe-btn-fourCard"
+                            buy-button-id="buy_btn_1U5BeOIdvpDSvxu1ktSo4Y8x"
+                            publishable-key="pk_live_51NgzQEIdvpDSvxu1Zb1Jk1a1WdIpcoUAQLcCFhMwzT8CkooM6HbhFvrjwDz588nUdaU6ejJCfwjpchR2RpTPgdfY00nmvldEA7"
+                            style={{ width: "100%", height: "100%", display: "block" }}
+                          />
+                        )}
+                        {offering.id === "video" && (
+                          <stripe-buy-button
+                            id="stripe-btn-video"
+                            buy-button-id="buy_btn_1U5BfJIdvpDSvxu1RNEI0DBH"
+                            publishable-key="pk_live_51NgzQEIdvpDSvxu1Zb1Jk1a1WdIpcoUAQLcCFhMwzT8CkooM6HbhFvrjwDz588nUdaU6ejJCfwjpchR2RpTPgdfY00nmvldEA7"
+                            style={{ width: "100%", height: "100%", display: "block" }}
+                          />
+                        )}
+                      </div>
+
+                      {/* Our custom-styled button ON TOP with pointer-events-none */}
+                      <div
+                        className={[
+                          "absolute inset-0 z-10 flex items-center justify-center w-full min-h-[48px] py-3.5 px-4 rounded-2xl font-sans text-xs tracking-wider uppercase font-semibold transition-all duration-300 text-center pointer-events-none",
+                          "group-hover/btn:scale-[1.02] group-active/btn:scale-[0.98]",
+                          offering.featured
+                            ? "bg-[#D79B42] text-[#1a1208] group-hover/btn:bg-[#c08a38] group-hover/btn:shadow-[0_8px_24px_rgba(215,155,66,0.35)]"
+                            : "bg-[#262626] text-[#FCFAF7] group-hover/btn:bg-[#D79B42] group-hover/btn:text-[#1a1208] group-hover/btn:shadow-[0_8px_24px_rgba(38,38,38,0.15)]",
+                        ].join(" ")}
+                      >
+                        {offering.cta}
+                      </div>
+                    </div>
+                  ) : (
+                    <motion.a
+                      href={getMailtoLink(offering)}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+                      className={[
+                        "flex items-center justify-center w-full min-h-[48px] py-3.5 px-4 rounded-2xl font-sans text-xs tracking-wider uppercase font-semibold cursor-pointer transition-colors duration-200 text-center",
+                        offering.featured
+                          ? "bg-[#D79B42] text-[#1a1208] hover:bg-[#c08a38] hover:shadow-[0_8px_24px_rgba(215,155,66,0.35)]"
+                          : "bg-[#262626] text-[#FCFAF7] hover:bg-[#D79B42] hover:text-[#1a1208] hover:shadow-[0_8px_24px_rgba(38,38,38,0.15)]",
+                      ].join(" ")}
+                    >
+                      {offering.cta}
+                    </motion.a>
+                  )}
                 </div>
 
               </motion.div>

@@ -37,7 +37,7 @@ export default function RetreatsPage() {
       </section>
 
       {/* Form Section */}
-      <section className="py-20 md:py-28">
+      <section className="py-12 md:py-28">
         <div className="max-w-[760px] mx-auto px-6">
           <FadeIn delay={0.1}>
             {status === "success" ? (
@@ -48,7 +48,7 @@ export default function RetreatsPage() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-8 bg-[#F8F5EF]/40 border border-[#E8E1D7] rounded-3xl p-8 md:p-12 shadow-sm">
+              <form onSubmit={handleSubmit} className="space-y-8 bg-[#F8F5EF]/40 border border-[#E8E1D7] rounded-3xl p-5 md:p-12 shadow-sm">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
                     <label htmlFor="name" className="block font-sans text-xs tracking-widest uppercase text-[#6D6D6D]">
@@ -181,7 +181,7 @@ export default function RetreatsPage() {
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="inline-flex items-center justify-center h-12 px-10 font-sans text-xs tracking-widest uppercase bg-[#262626] text-[#FCFAF7] rounded-full hover:bg-[#D79B42] hover:text-[#1a1208] transition-colors duration-500 disabled:opacity-50 disabled:hover:bg-[#262626]"
+                    className="inline-flex items-center justify-center min-h-[48px] px-8 font-sans text-xs tracking-wider uppercase font-semibold bg-[#262626] text-[#FCFAF7] rounded-2xl hover:bg-[#D79B42] hover:text-[#1a1208] transition-colors duration-500 disabled:opacity-50 disabled:hover:bg-[#262626]"
                   >
                     {status === "submitting" ? "Sending..." : "Submit Inquiry"}
                   </button>

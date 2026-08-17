@@ -42,7 +42,7 @@ export function ThreePillarsSection() {
   return (
     <section
       id="practice"
-      className="bg-[#FCFAF7] py-24 md:py-36"
+      className="bg-[#FCFAF7] py-16 md:py-36"
       aria-labelledby="pillars-heading"
     >
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">

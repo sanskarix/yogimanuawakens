@@ -8,6 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 const navLinks = [
   { href: "/#channels", label: "Channels" },
   { href: "/#bookings", label: "Offerings" },
+  { href: "/onsite", label: "Onsite Yoga" },
   { href: "/shop", label: "Shop" },
   { href: "/#community", label: "Community" },
 ];
@@ -44,17 +45,22 @@ export function Navigation() {
         aria-label="Main navigation"
       >
         {/* Wordmark */}
-        <a
-          href="#"
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+        <Link
+          href="/"
+          onClick={(e) => {
+            if (isHome) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
           className={[
             "font-serif text-[23px] tracking-wide transition-colors duration-500 select-none",
             isHome ? "text-white hover:text-[#D79B42]/90" : "text-[#262626] hover:text-[#D79B42]",
           ].join(" ")}
-          aria-label="Yogi Manu – scroll to top"
+          aria-label="Yogi Manu – home"
         >
           Yogi Manu
-        </a>
+        </Link>
 
         {/* Desktop Links */}
         <ul className="hidden md:flex items-center gap-9" role="list">

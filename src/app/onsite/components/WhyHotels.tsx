@@ -12,7 +12,7 @@ const benefits = [
   },
   {
     title: "Convenient Relaxation",
-    description: "Guests can participate in professional sessions right on the property—no transport or off-property bookings required.",
+    description: "Guests can participate in professional sessions right on the property–no transport or off-property bookings required.",
   },
   {
     title: "Memorable Hospitality",
@@ -30,9 +30,9 @@ const benefits = [
 
 export function WhyHotels() {
   return (
-    <section className="bg-[#F8F5EF] py-24 md:py-36 border-t border-[#E8E1D7]">
+    <section className="bg-[#F8F5EF] py-16 md:py-36 border-t border-[#E8E1D7]">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-16">
-        
+
         {/* Header */}
         <FadeIn>
           <div className="max-w-[620px] mb-16 md:mb-24">

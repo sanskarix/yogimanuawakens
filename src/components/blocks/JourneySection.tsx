@@ -42,7 +42,7 @@ export function JourneySection() {
   return (
     <section
       id="journey"
-      className="bg-[#F8F5EF] py-24 md:py-36 overflow-hidden"
+      className="bg-[#F8F5EF] py-16 md:py-36 overflow-hidden"
       aria-labelledby="journey-heading"
     >
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
