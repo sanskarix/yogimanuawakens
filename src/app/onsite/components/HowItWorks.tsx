@@ -14,7 +14,7 @@ const steps = [
   {
     num: "03",
     title: "Seamless Onsite Service",
-    description: "Yogi Manu travels to your property with all required equipment, handles setup, instruction, and clean-up.",
+    description: "Yogi Manu or a qualified instructor will travel to your property with all required equipment, handles setup, instruction, and clean-up.",
   },
   {
     num: "04",

@@ -357,7 +357,7 @@ I Want More Peace
 
 ↓
 
-I Feel Drawn To Devotion
+I Feel Devoted
 
 Each links to relevant teachings.
 

@@ -26,7 +26,7 @@ const channels = [
       "Simple practices to ease pain, build flexibility and reconnect with yourself. Whether you're just beginning or have practiced for years, these classes meet you exactly where you are.",
     cta: "Watch yoga classes",
     href: YOUTUBE_YOGA,
-    image: "/images/generic4.jpeg",
+    image: "/yoga2.jpeg",
     accent: "#5E7052",
   },
   {

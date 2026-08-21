@@ -8,9 +8,12 @@ export function TarotHero() {
 
       <div className="relative z-10 max-w-[760px] mx-auto px-6 text-center">
         <FadeIn>
-          <span className="block font-sans text-[10px] tracking-[0.25em] uppercase text-[#D79B42] mb-8">
+          <span className="block font-sans text-[10px] tracking-[0.25em] uppercase text-[#D79B42] mb-2">
             Tarot & Mantra
           </span>
+          <p className="font-sans text-[11px] tracking-[0.15em] uppercase text-[#8C827A] mb-8 font-medium">
+            For entertainment purposes only
+          </p>
           <h1 className="font-serif text-[clamp(2.5rem,5vw,4.5rem)] font-light text-[#262626] leading-[1.1] tracking-tight mb-8">
             Clarity guided by <em className="italic">devotion</em>.
           </h1>

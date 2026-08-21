@@ -12,14 +12,14 @@ const programs = [
   {
     icon: Plane,
     title: "Travel Recovery & Reset",
-    time: "45 Minutes · Custom Schedule",
+    time: "60 Minutes · Custom Schedule",
     description:
       "Specifically structured for travelers recovering from long flights and jet lag. Focuses on releasing compression in the back, opening tight shoulders, and grounding the nervous system.",
   },
   {
     icon: Sunset,
     title: "Evening Restorative",
-    time: "75 Minutes · Evening",
+    time: "60 Minutes · Evening",
     description:
       "A deeply relaxing practice utilizing supportive props. Long-held, passive postures encourage the body's natural relaxation response, preparing guests for deep, restorative sleep.",
   },

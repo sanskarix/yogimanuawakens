@@ -21,7 +21,7 @@ const pathways = [
   },
   {
     id: "devotion",
-    intent: "I Feel Drawn to Devotion",
+    intent: "I Feel Devoted",
     description:
       "Kirtan, spiritual teachings, and the path of bhakti – practice rooted in love and surrender.",
     href: "https://www.youtube.com/@yogimanuawakens",

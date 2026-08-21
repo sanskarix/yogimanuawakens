@@ -387,6 +387,15 @@ export function TarotOptions() {
           ))}
         </div>
 
+        {/* Legal Disclaimer */}
+        <FadeIn delay={0.2}>
+          <div className="mt-16 md:mt-24 pt-8 border-t border-[#E8E1D7] text-center max-w-[720px] mx-auto">
+            <p className="font-sans text-xs md:text-sm text-[#8C827A] leading-relaxed">
+              This is for entertainment purposes only and should not replace any professional medical, psychological, legal, or financial advice. You maintain full personal accountability for your own choices and actions.
+            </p>
+          </div>
+        </FadeIn>
+
       </div>
     </section>
   );
